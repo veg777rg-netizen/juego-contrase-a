@@ -1,2 +1,2 @@
-# juego-contrase-a
+index.html
 Mini juego para evaluar contraseñas
