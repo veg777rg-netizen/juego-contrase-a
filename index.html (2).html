@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Protección de Datos - El Cofre</title>
+<style>
+body {
+    background: #111;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+#contenedor {
+    margin-top: 40px;
+    background: #222;
+    padding: 30px;
+    border-radius: 15px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 20px #0f0;
+}
+button {
+    background: #0f0;
+    border: none;
+    padding: 15px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+button:hover {
+    background: #0a0;
+}
+#resultado {
+    margin-top: 20px;
+    font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>🔐 ¿Dato Público o Privado?</h1>
+<div id="contenedor">
+    <h2 id="dato"></h2>
+
+    <button onclick="elegir('privado')">Privado 🔒</button>
+    <button onclick="elegir('publico')">Público 🌐</button>
+
+    <p id="resultado"></p>
+</div>
+
+<script>
+const datos = [
+    {texto: "Tu dirección exacta", tipo: "privado"},
+    {texto: "Foto de tu DNI", tipo: "privado"},
+    {texto: "Tu color favorito", tipo: "publico"},
+    {texto: "Número de teléfono", tipo: "privado"},
+    {texto: "Selfie con amigos", tipo: "publico"},
+    {texto: "Contraseña del WiFi", tipo: "privado"},
+    {texto: "Tu apodo o nickname", tipo: "publico"},
+    {texto: "Tu ubicación en tiempo real", tipo: "privado"}
+];
+
+let actual;
+
+function nuevoDato() {
+    actual = datos[Math.floor(Math.random() * datos.length)];
+    document.getElementById("dato").innerText = actual.texto;
+    document.getElementById("resultado").innerText = "";
+}
+
+function elegir(opcion) {
+    if(opcion === actual.tipo) {
+        document.getElementById("resultado").innerHTML = "✔️ Correcto. Este dato es <b>" + actual.tipo + "</b>.";
+    } else {
+        document.getElementById("resultado").innerHTML = "❌ Incorrecto. Este dato en realidad es <b>" + actual.tipo + "</b>.";
+    }
+    setTimeout(nuevoDato, 1500);
+}
+
+nuevoDato();
+</script>
+
+</body>
+</html>
